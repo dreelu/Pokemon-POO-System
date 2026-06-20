@@ -57,6 +57,22 @@ class Pokemon {
             std::cout << "\n================================\n";
         }
 
+        void takeDamage(int damage) {
+            hp-=damage;
+        }
+
+        //Maybe a bool func would be bether. Also, remove the couts.
+        void isAlive() {
+            if (hp > 0) {
+               std::cout << "The pokemon stil alive.\n";
+               std::cout << "The pokemon has " << hp << "HP remaining.\n";
+            } else {
+                std::cout << "The pokemon have fainted.\n";
+            }
+        }
+
+        virtual void attack() = 0;
+
         void info() {
             std::cout << "\n============Info============\n";
 
@@ -66,10 +82,36 @@ class Pokemon {
         }
 };
 
+class FirePokemon : public Pokemon {
+    void attack() override {
+        return;
+    }
+};
+
+class WaterPokemon : public Pokemon {
+    void attack() override {
+        return;
+    }
+};
+
+class EletricPokemon : public Pokemon {
+    void attack() override {
+        return;
+    }
+};
+
+class NormalPokemon : public Pokemon {
+    void attack() override {
+        return;
+    }
+};
+
 int main() {
-    Pokemon eevee;
+    NormalPokemon eevee;
     eevee.constructor("eevee", "normal", 10, 31);
     eevee.learnAttack("takle", "normal", 5, 10);
     eevee.listAttacks();
     eevee.info();
+    eevee.takeDamage(31);
+    eevee.isAlive();
 }
